@@ -1,0 +1,47 @@
+Alter Has
+
+ALTER TABLE `howtocraft`.`has` 
+DROP FOREIGN KEY `HasItem`;
+ALTER TABLE `howtocraft`.`has` 
+ADD COLUMN `NumMaterials` INT NOT NULL AFTER `MaterialName`,
+CHANGE COLUMN `ItemName` `MaterialName` VARCHAR(255) NOT NULL ;
+ALTER TABLE `howtocraft`.`has` 
+ADD CONSTRAINT `HasItem`
+  FOREIGN KEY (`MaterialName`)
+  REFERENCES `howtocraft`.`item` (`ItemName`);
+
+
+Alter Recipe
+
+ALTER TABLE `howtocraft`.`recipe` 
+DROP FOREIGN KEY `Item`;
+ALTER TABLE `howtocraft`.`recipe` 
+ADD COLUMN `NumItems` INT NOT NULL AFTER `ItemName`,
+CHANGE COLUMN `ItemName` `ItemName` VARCHAR(255) NOT NULL ;
+ALTER TABLE `howtocraft`.`recipe` 
+ADD CONSTRAINT `Item`
+  FOREIGN KEY (`ItemName`)
+  REFERENCES `howtocraft`.`item` (`ItemName`);
+
+
+Alter Has 2.0
+
+ALTER TABLE `howtocraft`.`has` 
+DROP FOREIGN KEY `HasItem`;
+ALTER TABLE `howtocraft`.`has` 
+ADD INDEX `HasItem_idx` (`MaterialName` ASC) VISIBLE,
+DROP INDEX `HasItem_idx` ;
+;
+
+ALTER TABLE `howtocraft`.`has` 
+ADD CONSTRAINT `HasItem2`
+  FOREIGN KEY (`MaterialName`)
+  REFERENCES `howtocraft`.`material` (`MaterialName`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+Alter Material
+
+ALTER TABLE `howtocraft`.`material` 
+ADD PRIMARY KEY (`MaterialName`);
+;

@@ -1,1 +1,21 @@
+Steps for Insertion:
 
+1. Insert into Material
+2. Insert into Item
+3. Insert into Recipe
+4. Insert into Has
+
+
+Cobblestone Stairs Example
+
+Insert into howtocraft.material (MaterialName, isBaseMaterial, ItemName)
+Values ('Cobblestone', 1, null);
+
+Insert into howtocraft.item (ItemName)
+Values ('Cobblestone Stairs');
+
+Insert into howtocraft.recipe (RecipeID, ItemName, NumItems)
+Values (1, 'Cobblestone Stairs', 4);
+
+Insert into howtocraft.has (RecipeID, MaterialName, NumMaterials)
+Values (1, 'Cobblestone', 6);

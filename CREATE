@@ -1,1 +1,53 @@
+Recipe Table Create
 
+CREATE TABLE `howtocraft`.`recipe` (
+  `RecipeID` BIGINT NOT NULL,
+  `ItemName` VARCHAR(255) NULL,
+  PRIMARY KEY (`RecipeID`),
+  INDEX `ItemName_idx` (`ItemName` ASC) VISIBLE,
+  CONSTRAINT `Item`
+    FOREIGN KEY (`ItemName`)
+    REFERENCES `howtocraft`.`item` (`ItemName`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+Create Has Table
+
+CREATE TABLE `howtocraft`.`has` (
+  `RecipeID` BIGINT NOT NULL,
+  `ItemName` VARCHAR(255) NOT NULL,
+  INDEX `HasItem_idx` (`ItemName` ASC) VISIBLE,
+  INDEX `RecipeID_idx` (`RecipeID` ASC) VISIBLE,
+  CONSTRAINT `HasItem`
+    FOREIGN KEY (`ItemName`)
+    REFERENCES `howtocraft`.`item` (`ItemName`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `RecipeID`
+    FOREIGN KEY (`RecipeID`)
+    REFERENCES `howtocraft`.`recipe` (`RecipeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+Create Item Table
+
+CREATE TABLE `howtocraft`.`item` (
+  `ItemName` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`ItemName`));
+
+
+Create Material Table
+
+CREATE TABLE `howtocraft`.`material` (
+  `MaterialName` VARCHAR(255) NOT NULL,
+  `isBaseMaterial` TINYINT NOT NULL,
+  `ItemName` VARCHAR(255) NULL,
+  PRIMARY KEY (`MaterialName`),
+  INDEX `ItemName_idx` (`ItemName` ASC) VISIBLE,
+  CONSTRAINT `ItemName`
+    FOREIGN KEY (`ItemName`)
+    REFERENCES `howtocraft`.`item` (`ItemName`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
