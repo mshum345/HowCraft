@@ -7,14 +7,14 @@ Steps for Insertion:
 
 Cobblestone Stairs Example
 
-Insert into howtocraft.material (MaterialName, isBaseMaterial, ItemName)
-Values ('Cobblestone', 1, null);
+INSERT INTO howtocraft.material (MaterialName, isBaseMaterial, ItemName)
+VALUES ('Cobblestone', 1, null);
 
-Insert into howtocraft.item (ItemName)
-Values ('Cobblestone Stairs');
+INSERT INTO howtocraft.item (ItemName)
+VALUES ('Cobblestone Stairs');
 
-Insert into howtocraft.recipe (RecipeID, ItemName, NumItems)
-Values (1, 'Cobblestone Stairs', 4);
+INSERT INTO howtocraft.recipe (RecipeID, ItemName, NumItems)
+VALUES (1, 'Cobblestone Stairs', 4);
 
-Insert into howtocraft.has (RecipeID, MaterialName, NumMaterials)
-Values (1, 'Cobblestone', 6);
+INSERT INTO howtocraft.has (RecipeID, MaterialName, NumMaterials)
+VALUES (1, 'Cobblestone', 6);
