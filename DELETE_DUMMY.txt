@@ -1,1 +1,13 @@
+Delete example:
 
+This example would be deleting the data we inserted for the cobblestone stairs we have included in the Insert file.
+
+DELETE FROM howtocraft.material WHERE MaterialName = 'Cobblestone';
+
+DELETE FROM howtocraft.item WHERE ItemName = 'Cobblestone Stairs';
+
+DELETE FROM howtocraft.recipe WHERE RecipeID = 1;
+
+DELETE FROM howtocraft.has WHERE RecipeID = 1;
+
+This script would delete all the inserted data related to creating Cobblestone Stairs.
